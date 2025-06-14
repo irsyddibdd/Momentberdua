@@ -1,0 +1,396 @@
+/* Import font dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+
+/* Variabel Warna: Memudahkan kita jika ingin ganti tema warna nanti */
+:root {
+    --bg-color: #fdf6f8; /* Latar belakang pink sangat lembut */
+    --container-bg: #ffffff;
+    --primary-text: #333333;
+    --heading-font: 'Pacifico', cursive;
+    --body-font: 'Poppins', sans-serif;
+    --accent-color: #e83e8c; /* Pink yang lebih kuat dan modern */
+    --soft-accent: #f8d7da; /* Pink lembut untuk detail */
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Animasi Fade-In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--primary-text);
+    font-family: var(--body-font);
+    font-weight: 300;
+    line-height: 1.8;
+    margin: 0;
+    padding: 20px;
+    /* Menerapkan animasi fadeIn selama 1 detik */
+    animation: fadeIn 1s ease-in-out;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: var(--container-bg);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+/* --- Header --- */
+header {
+    text-align: center;
+    border-bottom: 1px solid var(--soft-accent);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-family: var(--heading-font);
+    color: var(--accent-color);
+    font-size: 3.5em; /* Sedikit lebih besar */
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+header p {
+    font-size: 1.1em;
+    color: #6c757d; /* Abu-abu lembut */
+}
+
+/* --- Judul Section (Galeri & Surat) --- */
+main h2, .letter h2 {
+    font-family: var(--heading-font);
+    color: var(--accent-color);
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+/* --- Galeri --- */
+/* --- GAYA UNTUK VIDEO SLIDER BARU --- */
+.swiper {
+    width: 100%;
+    /* Beri tinggi yang cukup untuk menampung slide potrait */
+    height: 70vh; /* 70% dari tinggi layar, bisa disesuaikan */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    
+    /* KUNCI UTAMA: Mengatur bentuk menjadi potrait 9:16 */
+    max-height: 95%; /* Batasi tinggi maksimal slide */
+    aspect-ratio: 9 / 16; /* Ini akan memaksa elemen memiliki rasio 9:16 */
+    
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    
+    /* Biarkan SwiperJS yang mengatur lebarnya secara otomatis */
+    width: auto;
+    
+    /* Tambahan untuk efek coverflow agar lebih rapi */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide video, .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%; /* Tambahkan ini */
+    object-fit: cover; /* Pastikan ini ada agar video mengisi tanpa distorsi */
+}
+
+/* Kustomisasi Tombol Panah Navigasi */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--accent-color) !important; /* Warnai panah dengan warna tema kita */
+}
+
+/* Kustomisasi Paginasi (titik-titik) */
+.swiper-pagination-bullet-active {
+    background: var(--accent-color) !important;
+}
+
+/* --- GAYA UNTUK GALERI FOTO BARU --- */
+.photo-gallery-container {
+    margin-bottom: 50px; /* Memberi jarak ke slider video di bawahnya */
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.photo-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* --- Surat --- */
+/* GANTI SEMUA GAYA .letter LAMA DENGAN BLOK BARU INI */
+
+/* --- GAYA BARU UNTUK SURAT YANG LEBIH ELEGAN --- */
+
+.letter {
+    /* Mengubahnya menjadi seperti selembar kertas */
+    background-color: #fdfdf6; /* Warna kertas gading/cream */
+    background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png"); /* Tekstur serat kertas halus */
+    padding: 40px 50px;
+    border: 1px solid #e9e9e9;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.07);
+    margin-top: 50px;
+    border-radius: 5px;
+    /* Efek kertas yang sedikit miring, terlihat lebih natural */
+    transform: rotate(-1.5deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.letter:hover {
+    transform: rotate(0deg) scale(1.02); /* Kertas akan lurus saat disentuh kursor */
+}
+
+/* Judul surat di atas kertas */
+.letter h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.letter-body p {
+    font-family: 'Poppins', sans-serif; /* Menggunakan font yang mudah dibaca untuk isi surat */
+    font-size: 1.1em;
+    line-height: 1.9;
+    color: #444;
+}
+
+/* Efek Drop Cap: Membuat huruf pertama menjadi besar dan artistik */
+.letter-body p:first-of-type::first-letter {
+    font-family: var(--heading-font); /* 'Pacifico' */
+    font-size: 4em;
+    float: left;
+    line-height: 1;
+    padding-right: 15px;
+    padding-top: 5px;
+    color: var(--accent-color);
+}
+
+/* Gaya khusus untuk tanda tangan */
+.signature {
+    margin-top: 30px;
+    text-align: right;
+    font-family: var(--heading-font); /* 'Pacifico' untuk efek tulisan tangan */
+    font-size: 2.2em !important; /* Ukuran lebih besar */
+    color: #e45a95;
+    line-height: 1 !important;
+}
+
+/* Media Query agar padding surat tidak terlalu besar di HP */
+@media (max-width: 768px) {
+    .letter {
+        padding: 25px 30px;
+        transform: rotate(0deg); /* Di mobile tidak perlu miring */
+    }
+    .letter:hover {
+        transform: none;
+    }
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1em;
+    color: #aab2bd;
+    font-family: var(--heading-font);
+}
+
+footer::before {
+    content: '❤️';
+    margin-right: 10px;
+}
+
+/* ------------------------------------------- */
+/* --- GAYA UNTUK TAMPILAN MOBILE (RESPONSIVE) --- */
+/* ------------------------------------------- */
+/* Aturan ini akan berlaku jika lebar layar 768px atau kurang (tablet dan HP) */
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Kurangi padding di layar kecil */
+    }
+    
+    .container {
+        padding: 20px; /* Kurangi padding container agar konten lebih lega */
+    }
+
+    header h1 {
+        font-size: 2.5em; /* Kecilkan ukuran judul utama */
+    }
+
+    main h2, .letter h2 {
+        font-size: 2em; /* Kecilkan juga judul section */
+    }
+
+    .gallery {
+        /* Di layar kecil, kita ingin gambar tidak terlalu kecil */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+#modal-overlay {
+    position: fixed; /* Tetap di posisi yang sama bahkan saat di-scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Latar belakang hitam transparan */
+    display: flex; /* Menggunakan flexbox untuk menengahkan modal */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Memastikan overlay ada di lapisan paling atas */
+    transition: opacity 0.3s ease;
+}
+
+#custom-modal {
+    background-color: var(--container-bg);
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 90%; /* Lebar 90% di layar kecil, max 400px di layar besar */
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+#custom-modal h2 {
+    font-family: var(--heading-font);
+    color: var(--accent-color);
+    font-size: 2em;
+    margin-top: 0;
+}
+
+#custom-modal p {
+    font-family: var(--body-font);
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+#play-music-btn {
+    font-family: var(--body-font);
+    font-weight: 600;
+    font-size: 1em;
+    color: #fff;
+    background-color: var(--accent-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px; /* Membuat tombol berbentuk kapsul */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#play-music-btn:hover {
+    background-color: #d63384; /* Warna pink sedikit lebih gelap saat disentuh */
+    transform: scale(1.05);
+}
+
+/* Kelas untuk menyembunyikan modal */
+.hidden {
+    opacity: 0;
+    pointer-events: none; /* Tidak bisa diklik saat tersembunyi */
+}
+
+.hidden #custom-modal {
+    transform: scale(0.7);
+}
+
+/* ------------------------------------------- */
+/* --- SEMUA EFEK DAN ANIMASI BARU --- */
+/* ------------------------------------------- */
+
+/* 1. EFEK LATAR BELAKANG BERGERAK */
+@keyframes animated-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    /* Kita ganti background solid menjadi gradient */
+    background: linear-gradient(-45deg, #fce4ec, #f8bbd0, #f48fb1, #f06292);
+    background-size: 400% 400%;
+    animation: fadeIn 1s ease-in-out, animated-gradient 15s ease infinite; /* Tambahkan animasi gradient */
+}
+
+/* 2. PERSIAPAN ANIMASI SAAT SCROLL */
+.animate-on-scroll {
+    opacity: 0; /* Awalnya tidak terlihat */
+    transform: translateY(50px); /* Awalnya sedikit di bawah posisi asli */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Kelas ini akan ditambahkan oleh JavaScript saat elemen terlihat */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* 3. EFEK HATI BERJATUHAN */
+@keyframes fall {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh); /* Jatuh sampai ke dasar viewport */
+    }
+}
+
+.heart {
+    position: fixed; /* Posisi relatif terhadap layar */
+    top: -10vh; /* Mulai dari atas layar */
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    animation-name: fall;
+    animation-timing-function: linear;
+    pointer-events: none; /* Hati tidak bisa diklik */
+    z-index: 999;
+}
+
+
+/* 4. EFEK 3D TILT PADA GALERI */
+.gallery img, .gallery video {
+    /* Tambahkan properti ini untuk efek 3D */
+    transform-style: preserve-3d;
+    transform: perspective(1000px); /* Menentukan kedalaman perspektif */
+    /* Kita ubah sedikit transisinya agar lebih smooth saat mouse keluar */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
